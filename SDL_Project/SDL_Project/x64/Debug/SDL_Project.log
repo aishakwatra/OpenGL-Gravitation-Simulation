@@ -1,0 +1,14 @@
+﻿  Affine.cpp
+  Camera.cpp
+  CubeMesh.cpp
+  DT285_DrawingCam.cpp
+C:\Users\user\Documents\CREATIVE TECHNOLOGY\Year 2\Semester 2\SDL_Project\SDL_Project\DT285_DrawingCam.cpp(78,77): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\user\Documents\CREATIVE TECHNOLOGY\Year 2\Semester 2\SDL_Project\SDL_Project\DT285_DrawingCam.cpp(154,53): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\Documents\CREATIVE TECHNOLOGY\Year 2\Semester 2\SDL_Project\SDL_Project\DT285_DrawingCam.cpp(189,81): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  DT285_Project1.cpp
+C:\Users\user\Documents\CREATIVE TECHNOLOGY\Year 2\Semester 2\SDL_Project\SDL_Project\DT285_Project1.cpp(179,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  FrustumMesh.cpp
+  Projection.cpp
+  SnubDodecMesh.cpp
+  Generating Code...
+  SDL_Project.vcxproj -> C:\Users\user\Documents\CREATIVE TECHNOLOGY\Year 2\Semester 2\SDL_Project\x64\Debug\SDL_Project.exe
