@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{ec6e8f8e-589b-440e-a870-0e0649afdb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\imgui">
+      <UniqueIdentifier>{1bbf887b-d935-4be9-9578-b1d4a529f900}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Affine.h">
@@ -62,7 +68,7 @@
     <ClCompile Include="Affine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DT285_Project1.cpp">
+    <ClCompile Include="Gravitation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

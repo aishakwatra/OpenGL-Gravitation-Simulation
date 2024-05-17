@@ -33,7 +33,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CubeMesh.cpp" />
     <ClCompile Include="DT285_DrawingCam.cpp" />
-    <ClCompile Include="DT285_Project1.cpp" />
+    <ClCompile Include="Gravitation.cpp" />
     <ClCompile Include="FrustumMesh.cpp" />
     <ClCompile Include="Projection.cpp" />
     <ClCompile Include="SnubDodecMesh.cpp" />
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL\include;$(SolutionDir)external\glm;$(SolutionDir)external\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)external\SDL\include;$(SolutionDir)external\glm;$(SolutionDir)external\glew-2.1.0\include;imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
