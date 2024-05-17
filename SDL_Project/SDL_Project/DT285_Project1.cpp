@@ -39,6 +39,8 @@ std::vector<Camera> cameras;
 Camera cam2_0, cam3_0;
 int currentCameraIndex = 0;
 
+Camera CAM;
+
 Point cam1_Distance(0, 0, 4.0f);
 
 SnubDodecMesh snub; //earth and moon mesh
@@ -59,30 +61,11 @@ float earth_scale;
 
 float aspect = float(width) / float(height);
 
-Vector cam2LookVector;
-
-//CUBES
-CubeMesh cube;
-
-std::vector<Affine> cube2world;
-
-float cubeDimensions = 0.3f; //uniform cube
-float cubeSpacing = 0.03f;
-
-//dimensions including spacing
-float effectiveDimensions = cubeDimensions + cubeSpacing;
-
-float wallDistance = 2.5f; //distance from the center to each wall
-float wallHeight = effectiveDimensions * 5; //total height of wall
-
 //OBJECT COLORS
-
 
 Vector earthColor = Vector(0.4f, 0.8f, 0.4f);
 Vector moonColor = Vector(0.5f, 0.6f, 0.7f);
 
-Vector leftCubeClr = Vector(0.68f, 0.85f, 0.9f);
-Vector rightCubeClr = Vector(0.7f, 0.6f, 0.9f);
 
 void Resized(int W, int H) {
 	width = W;
@@ -111,17 +94,7 @@ void Init(void) {
 
 	Vector lookVector = -ez;
 
-	cameras.push_back(Camera(cameraPosition, lookVector, Vector(0, 1, 0), 0.5f * PI, aspect, 0.01f, 20.0f));
-
-	//CAM 2
-	cam2LookVector = earth_center - moon_center;
-	
-	cam2_0 = Camera(moon_center, cam2LookVector, ey, 0.5f * PI, aspect, 0.01f, 20.0f);
-	cameras.push_back(cam2_0);
-
-	//CAM 3
-	cam3_0 = Camera(moon_center, -cam2LookVector, ey, 0.5f * PI, aspect, 0.01f, 20.0f);
-	cameras.push_back(cam3_0);
+	CAM = Camera(cameraPosition, lookVector, Vector(0, 1, 0), 0.5f * PI, aspect, 0.01f, 20.0f);
 
 	//EARTH & MOON TRANSFORMATIONS
 
@@ -136,40 +109,6 @@ void Init(void) {
 	snub2worldMoon = Trans(moon_center - O)
 		* Scale(2.0f / moon_scale)
 		* Trans(O - snub.Center());
-
-	// LEFT Wall
-	for (int i = 0; i < 5; ++i) { 
-		for (int j = 0; j < 5; ++j) {
-
-			Point cubePosition = Point(-wallDistance - cubeDimensions / 2,
-				effectiveDimensions * i - wallHeight / 2,
-				effectiveDimensions * j - (cubeDimensions * 5 + cubeSpacing * 4) / 2 - 2.5f);
-
-			cube2world.push_back(Trans(cubePosition - O)
-				* Scale(0.1f / cube.Dimensions().x,
-					cubeDimensions / cube.Dimensions().y,
-					cubeDimensions / cube.Dimensions().z)
-				* Trans(O - cube.Center()));
-
-		}
-	}
-
-	// RIGHT WALL
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) { 
-
-			Point cubePosition = Point(wallDistance + cubeDimensions / 2,
-				effectiveDimensions * i - wallHeight / 2,
-				effectiveDimensions * j - (cubeDimensions * 5 + cubeSpacing * 4) / 2 - 2.5f);
-
-			cube2world.push_back(Trans(cubePosition - O)
-				* Scale(0.1f / cube.Dimensions().x,
-					cubeDimensions / cube.Dimensions().y,
-					cubeDimensions / cube.Dimensions().z)
-				* Trans(O - cube.Center()));
-
-		}
-	}
 
 }
 
@@ -192,7 +131,7 @@ void Draw(void) {
 	}
 
 	// clear the screen
-	glClearColor(1, 1, 1, 0);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	// clear the z-buffer
 	glClearDepth(1);
@@ -213,43 +152,9 @@ void Draw(void) {
 
 	snub2worldMoon = moonTransformation * snub2worldMoon;
 
-	//Extract the moon's current position from snub2worldMoon
-	Point moon_current_position = Point(snub2worldMoon[0][3], snub2worldMoon[1][3], snub2worldMoon[2][3]);
-
-	cam2LookVector = earth_center - cameras[1].Eye();
-
-	cameras[1].SetEyePosition(moon_current_position);
-	cameras[1].SetLookVector(cam2LookVector, ey);
-
-	cameras[2].SetEyePosition(moon_current_position);
-	cameras[2].SetLookVector(-cam2LookVector, ey);
-
-	Camera Cam = cameras[currentCameraIndex];
-
-	if (draw_solid) {
-		DisplayFaces(snub, snub2worldEarth, Cam, earthColor);
-		DisplayFaces(snub, snub2worldMoon, Cam, moonColor);
-	}	
-	else {
-		DisplayEdges(snub, snub2worldEarth, Cam, earthColor);
-		DisplayEdges(snub, snub2worldMoon, Cam, moonColor);
-	}
-
-	for (int i = 0; i < 25; i++) {
-		if (draw_solid)
-			DisplayFaces(cube, cube2world[i], Cam, leftCubeClr);
-		else
-			DisplayEdges(cube, cube2world[i], Cam, leftCubeClr);
-	}
-
-	for (int i = 25; i < 50; i++) {
-		if (draw_solid)
-			DisplayFaces(cube, cube2world[i], Cam, rightCubeClr);
-		else
-			DisplayEdges(cube, cube2world[i], Cam, rightCubeClr);
-	}
-
-
+	DisplayFaces(snub, snub2worldEarth, CAM, earthColor);
+	DisplayFaces(snub, snub2worldMoon, CAM, moonColor);
+	
 
 }
 
@@ -260,12 +165,6 @@ void key_pressed(SDL_Keycode keycode) {
 	switch (keycode) {
 	case '\x1b':
 		exit(0);
-		break;
-	case '3':
-		draw_solid = !draw_solid;
-		break;
-	case ' ':  // KEY 3 SWITCHES CAMERA
-		currentCameraIndex = (currentCameraIndex + 1) % 3;
 		break;
 	}
 
