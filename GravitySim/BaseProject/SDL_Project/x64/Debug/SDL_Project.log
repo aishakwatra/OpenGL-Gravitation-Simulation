@@ -1,0 +1,15 @@
+﻿  Simulation.cpp
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\Rendering\Mesh\OBJread\ObjFileReader.h(66,85): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\Rendering\Mesh\OBJread\ObjFileReader.h(62,34): warning C4101: 'textureIndex': unreferenced local variable
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\Rendering\Mesh\OBJread\ObjFileReader.h(62,48): warning C4101: 'normalIndex': unreferenced local variable
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\Rendering\DT285_DrawingCam.h(41,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\Rendering\DT285_DrawingCam.h(42,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\_Def3.h(14,17): warning C4099: 'Input::Key::EachKey': type name first seen using 'struct' now seen using 'class'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\_Def3.h(14,9): message : see declaration of 'Input::Key::EachKey'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\_Def3.h(59,20): warning C4099: 'Input::Controller::EachButton': type name first seen using 'struct' now seen using 'class'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\BanKEngine\Internal\_Def3.h(59,9): message : see declaration of 'Input::Controller::EachButton'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\Simulation.cpp(50,44): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\Simulation.cpp(58,44): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\Simulation.cpp(78,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\Scripts\DT285_proj2\Simulation.cpp(94,34): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  SDL_Project.vcxproj -> C:\BanK\KMUTT\Y2T2\PHYS\Project2 from CG\BaseProject\x64\Debug\SDL_Project.exe
